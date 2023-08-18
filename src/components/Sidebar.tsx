@@ -17,7 +17,7 @@ function Sidebar() {
         <div className="flex flex-col text-gray-800 ">
           <div className="flex items-center gap-4 border-b h-20 p-4 text-lg lg:ml-4">
             <div className="font-semibold cursor-pointer">
-              <Link to="#">Taiyo-Test</Link>
+              <Link to="#">Taiyo.AI-Test</Link>
             </div>
           </div>
           <div className="flex flex-col justify-between ">
@@ -81,7 +81,7 @@ function Sidebar() {
                   <div className="flex flex-shrink-0 items-center">
                     <div className="flex items-center gap-4 h-20 p-4 text-lg">
                       <div className="font-semibold cursor-pointer">
-                        <Link to="#">Taiyo-Test</Link>
+                        <Link to="#">Taiyo.AI-Test</Link>
                       </div>
                     </div>
                   </div>
