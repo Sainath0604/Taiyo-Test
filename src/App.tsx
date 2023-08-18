@@ -1,6 +1,16 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ContactPage from "./components/ContactPage";
 
 function App() {
-  return <div className="text-3xl text-red-700">app</div>;
+  return (
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<ContactPage/>}/>
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;
