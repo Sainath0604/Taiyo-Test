@@ -2,7 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Contact {
   id: number;
-
+  fName: string;
+  lName: string;
+  status: string;
 }
 
 interface ContactState {
