@@ -85,13 +85,13 @@ function ContactPage() {
               <div className="flex flex-col gap-8 p-2">
                 <div className="flex justify-center">
                   <Link to="/addContact">
-                    <button className="border border-black rounded-md bg-gray-300 py-2 px-4 text-xl font-semibold">
+                    <button className="border border-gray-400 rounded-md shadow-md bg-gray-300 py-2 px-4 text-xl font-semibold">
                       Create contact
                     </button>
                   </Link>
                 </div>
                 <div className="flex justify-center">
-                  <div className="flex-col lg:flex-row border border-black rounded-md bg-gray-300 p-4 text-xl font-semibold lg:w-1/2 flex justify-center gap-10">
+                  <div className="flex-col lg:flex-row border border-gray-400 rounded-md shadow-lg bg-gray-300 p-4 text-xl font-semibold lg:w-1/2 flex justify-center gap-10">
                     <div className="flex justify-center text-3xl font-semibold">
                       <BigCancelIcon />
                     </div>
@@ -110,7 +110,7 @@ function ContactPage() {
                     Contacts
                   </h1>
                   <Link to="/addContact">
-                    <button className="border border-black rounded-md bg-gray-300 p-1 lg:py-2 lg:px-4 lg:font-semibold">
+                    <button className="border border-gray-400 rounded-md shadow-lg bg-gray-300 p-1 lg:py-2 lg:px-4 lg:font-semibold">
                       Create new contact
                     </button>
                   </Link>
@@ -197,7 +197,7 @@ function ContactPage() {
                           </div>
                           <div className="flex flex-row gap-6 lg:gap-2 justify-center">
                             <button
-                              className="flex gap-1 items-center rounded-md border bg-[#ee7c68] text-white p-2"
+                              className="flex gap-1 items-center rounded-md border bg-green-500 text-white p-2"
                               onClick={handleUpdate}
                             >
                               <div className="flex gap-1 items-center">
@@ -208,7 +208,7 @@ function ContactPage() {
                               </div>
                             </button>
                             <button
-                            className="flex gap-1 items-center rounded-md border bg-[#ee7c68] text-white p-2"
+                            className="flex gap-1 items-center rounded-md border bg-red-500 text-white p-2"
                               onClick={() => setEditedContact(null)}
                             >
                               <span>Cancel</span>
@@ -248,7 +248,7 @@ function ContactPage() {
                           </div>
                           <div className="flex flex-row gap-2">
                             <button
-                              className="flex gap-1 items-center rounded-md border bg-[#ee7c68] text-[#fff] p-2"
+                              className="flex gap-1 items-center rounded-md border bg-red-600 text-[#fff] p-2"
                               onClick={() => handleDelete(item.id)}
                             >
                               <span>Delete</span>
@@ -257,7 +257,7 @@ function ContactPage() {
                               </span>
                             </button>
                             <button
-                              className="flex gap-1 items-center rounded-md border bg-[#ee7c68] text-[#fff] p-2"
+                              className="flex gap-1 items-center rounded-md border bg-blue-700 text-[#fff] p-2"
                               onClick={() => handleEdit(item.id)}
                             >
                               <span>Edit</span>

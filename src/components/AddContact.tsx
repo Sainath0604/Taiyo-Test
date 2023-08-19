@@ -92,12 +92,12 @@ const AddContact: React.FC<AddContactProps> = () => {
             <div className="p-5 flex justify-center">
               <div className="mb-2 flex  min-w-full flex-col gap-y-2 p-2 rounded-lg">
                 <div className="flex justify-center p-1">
-                  <h1 className="text-[#ee7c68] text-2xl font-semibold">
+                  <h1 className="text-red-700 text-3xl font-semibold">
                     Create contact
                   </h1>
                 </div>
-                <div className="flex flex-col items-center text-[#b44e3c] gap-y-2 lg:p-4 lg:m-2 lg:border">
-                  <div>
+                <div className="flex flex-col items-center text-red-800 gap-y-2 lg:p-4 lg:m-2">
+                  <div className="lg:border lg:px-6 lg:py-6 rounded-md shadow-md">
                     <div className="flex flex-row gap-2 p-2 items-center">
                       <div className="w-20 lg:w-24">First Name:</div>
                       <input
@@ -150,7 +150,7 @@ const AddContact: React.FC<AddContactProps> = () => {
                 <div className="mb-2 flex  justify-center p-1">
                   <Toast.Provider swipeDirection="right">
                     <button
-                      className="flex flex-row items-center gap-2 bg-[#ee7c68] text-[#fff] p-2 rounded-md"
+                      className="flex flex-row items-center gap-2 bg-green-500 text-[#fff] p-2 rounded-md"
                       onClick={() => {
                         setOpen(false);
                         window.clearTimeout(timerRef.current);
