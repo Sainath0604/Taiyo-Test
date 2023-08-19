@@ -2,10 +2,15 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeFromContact, editContact } from "../toolkit/Reducer";
-import { BigCancelIcon, CancelIcon, DeleteIcon, EditIcon, UpdateIcon } from "../Icons/Icons";
+import {
+  BigCancelIcon,
+  CancelIcon,
+  DeleteIcon,
+  EditIcon,
+  UpdateIcon,
+} from "../Icons/Icons";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-// import { RootState } from "../toolkit/Store";
 interface Contact {
   id: number;
   fName: string;
@@ -14,7 +19,6 @@ interface Contact {
 }
 
 function ContactPage() {
-  // const contact = useSelector((state: RootState) => state.contact.items);
   const dispatch = useDispatch();
   const [editedContact, setEditedContact] = useState<Contact | null>(null);
 
@@ -30,7 +34,7 @@ function ContactPage() {
       dispatch(removeFromContact(id));
       const updatedContacts = contact.filter((contact) => contact.id !== id);
       setContact(updatedContacts);
-      localStorage.setItem("contacts", JSON.stringify(updatedContacts)); // Update local storage
+      localStorage.setItem("contacts", JSON.stringify(updatedContacts)); 
       console.log("removed");
     } catch (error) {
       console.log("failed to remove");
@@ -74,7 +78,7 @@ function ContactPage() {
         <Sidebar />
         <div className=" md:w-4/5">
           <div>
-            <Navbar />
+            <Navbar pageTitle="Contact Page" />
           </div>
           <div className="p-6 lg:p-5">
             {contactLength === 0 ? (
@@ -88,7 +92,9 @@ function ContactPage() {
                 </div>
                 <div className="flex justify-center">
                   <div className="border border-black rounded-md bg-gray-300 p-4 text-xl font-semibold w-1/2 flex justify-center lg:gap-10">
-                    <div className="flex justify-center text-3xl font-semibold"><BigCancelIcon/></div>
+                    <div className="flex justify-center text-3xl font-semibold">
+                      <BigCancelIcon />
+                    </div>
                     <div className="flex flex-col text-3xl font-semibold">
                       <span>No Contact Found</span>
                       <span>Please add contact from</span>
@@ -98,10 +104,17 @@ function ContactPage() {
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col gap-4 p-2 justify-center">
-                <h1 className="text-center text-red-700 font-bold text-3xl">
-                  Contacts
-                </h1>
+              <div className="flex flex-col gap-4 p-2 justify-center items-center">
+                <div className="flex items-center lg:gap-64">
+                  <h1 className="text-center text-red-700 font-bold text-3xl">
+                    Contacts
+                  </h1>
+                  <Link to="/addContact">
+                    <button className="border border-black rounded-md bg-gray-300 py-2 px-4 font-semibold">
+                      Create new contact
+                    </button>
+                  </Link>
+                </div>
                 {contact.map((item) => (
                   <div
                     className="w-full border p-2 lg:w-[45vw] bg-[#f6f9fa] rounded-lg text-[#903d2f]"

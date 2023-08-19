@@ -1,4 +1,5 @@
-import { useEffect, useState, ChangeEvent } from "react";
+import { useEffect, useRef, useState, ChangeEvent } from "react";
+import * as Toast from "@radix-ui/react-toast";
 import { useDispatch } from "react-redux";
 import { addToContact, emptyContact } from "../toolkit/Reducer";
 import { AppDispatch } from "../toolkit/Store";
@@ -72,13 +73,20 @@ const AddContact: React.FC<AddContactProps> = () => {
     }
   }, [dispatch]);
 
+  const [open, setOpen] = useState(false);
+  const timerRef = useRef(0);
+
+  useEffect(() => {
+    return () => clearTimeout(timerRef.current);
+  }, []);
+
   return (
     <div className="m-0 h-screen">
       <div className="flex flex-col lg:flex-row">
         <Sidebar />
         <div className=" md:w-4/5">
           <div>
-            <Navbar />
+            <Navbar pageTitle="Contact Page" />
           </div>
           <div>
             <div className="p-5 flex justify-center">
@@ -140,15 +148,34 @@ const AddContact: React.FC<AddContactProps> = () => {
                   </div>
                 </div>
                 <div className="mb-2 flex  justify-center p-1">
-                  <button
-                    className="flex flex-row items-center gap-2 bg-[#ee7c68] text-[#fff] p-2 rounded-md"
-                    onClick={handleAddTask}
-                  >
-                    <span>Save contact</span>
-                    <span className="text-2xl">
-                      <CreateIcon />
-                    </span>
-                  </button>
+                  <Toast.Provider swipeDirection="right">
+                    <button
+                      className="flex flex-row items-center gap-2 bg-[#ee7c68] text-[#fff] p-2 rounded-md"
+                      onClick={() => {
+                        setOpen(false);
+                        window.clearTimeout(timerRef.current);
+                        timerRef.current = window.setTimeout(() => {
+                          setOpen(true);
+                        }, 100);
+                        handleAddTask();
+                      }}
+                    >
+                      <span>Save contact</span>
+                      <span className="text-2xl">
+                        <CreateIcon />
+                      </span>
+                    </button>
+
+                    <Toast.Root
+                      duration={2000}
+                      className="bg-white text-black rounded-sm px-4 py-2 shadow-sm shadow-black fixed bottom-5 right-5 lg:right-16 max-w-xs"
+                      open={open}
+                      onOpenChange={setOpen}
+                    >
+                      <Toast.Title className="ToastTitle">Contact saved</Toast.Title>
+                    </Toast.Root>
+                    <Toast.Viewport className="ToastViewport" />
+                  </Toast.Provider>
                 </div>
               </div>
             </div>
