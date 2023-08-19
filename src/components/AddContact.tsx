@@ -81,7 +81,7 @@ const AddContact: React.FC<AddContactProps> = () => {
   }, []);
 
   return (
-    <div className="m-0 h-screen">
+    <div className="h-screen">
       <div className="flex flex-col lg:flex-row">
         <Sidebar />
         <div className=" md:w-4/5">
@@ -96,9 +96,9 @@ const AddContact: React.FC<AddContactProps> = () => {
                     Create contact
                   </h1>
                 </div>
-                <div className="flex flex-col items-center text-[#b44e3c] gap-y-2 p-4 m-2 border">
+                <div className="flex flex-col items-center text-[#b44e3c] gap-y-2 lg:p-4 lg:m-2 lg:border">
                   <div>
-                    <div className="flex flex-row p-2">
+                    <div className="flex flex-row gap-2 p-2 items-center">
                       <div className="w-20 lg:w-24">First Name:</div>
                       <input
                         value={fName}
@@ -107,7 +107,7 @@ const AddContact: React.FC<AddContactProps> = () => {
                         onChange={handleFname}
                       />
                     </div>
-                    <div className="flex flex-row  p-2">
+                    <div className="flex flex-row gap-2 p-2 items-center">
                       <div className="w-20 lg:w-24">Last Name: </div>
                       <div>
                         <input
@@ -118,7 +118,7 @@ const AddContact: React.FC<AddContactProps> = () => {
                         />
                       </div>
                     </div>
-                    <div className="flex flex-row p-2 items-center">
+                    <div className="flex flex-row gap-2 p-2 items-center">
                       <div className="w-20 lg:w-24">Status:</div>
                       <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-2">
@@ -168,7 +168,7 @@ const AddContact: React.FC<AddContactProps> = () => {
 
                     <Toast.Root
                       duration={2000}
-                      className="bg-white text-black rounded-sm px-4 py-2 shadow-sm shadow-black fixed bottom-5 right-5 lg:right-16 max-w-xs"
+                      className="bg-[#121212] text-white rounded-sm px-4 py-2 shadow-sm shadow-black fixed bottom-5 right-5 lg:right-16 max-w-xs"
                       open={open}
                       onOpenChange={setOpen}
                     >

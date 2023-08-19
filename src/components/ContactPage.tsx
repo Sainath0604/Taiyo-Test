@@ -34,7 +34,7 @@ function ContactPage() {
       dispatch(removeFromContact(id));
       const updatedContacts = contact.filter((contact) => contact.id !== id);
       setContact(updatedContacts);
-      localStorage.setItem("contacts", JSON.stringify(updatedContacts)); 
+      localStorage.setItem("contacts", JSON.stringify(updatedContacts));
       console.log("removed");
     } catch (error) {
       console.log("failed to remove");
@@ -73,14 +73,14 @@ function ContactPage() {
   }
 
   return (
-    <div className="m-0 h-screen">
+    <div className="min-h-screen">
       <div className="flex flex-col lg:flex-row">
         <Sidebar />
         <div className=" md:w-4/5">
           <div>
             <Navbar pageTitle="Contact Page" />
           </div>
-          <div className="p-6 lg:p-5">
+          <div className="lg:p-5 mb-5">
             {contactLength === 0 ? (
               <div className="flex flex-col gap-8 p-2">
                 <div className="flex justify-center">
@@ -91,7 +91,7 @@ function ContactPage() {
                   </Link>
                 </div>
                 <div className="flex justify-center">
-                  <div className="border border-black rounded-md bg-gray-300 p-4 text-xl font-semibold w-1/2 flex justify-center lg:gap-10">
+                  <div className="flex-col lg:flex-row border border-black rounded-md bg-gray-300 p-4 text-xl font-semibold lg:w-1/2 flex justify-center gap-10">
                     <div className="flex justify-center text-3xl font-semibold">
                       <BigCancelIcon />
                     </div>
@@ -105,12 +105,12 @@ function ContactPage() {
               </div>
             ) : (
               <div className="flex flex-col gap-4 p-2 justify-center items-center">
-                <div className="flex items-center lg:gap-64">
-                  <h1 className="text-center text-red-700 font-bold text-3xl">
+                <div className="flex items-center gap-6 lg:gap-64">
+                  <h1 className="text-center text-red-700 font-semibold lg:font-bold lg:text-3xl">
                     Contacts
                   </h1>
                   <Link to="/addContact">
-                    <button className="border border-black rounded-md bg-gray-300 py-2 px-4 font-semibold">
+                    <button className="border border-black rounded-md bg-gray-300 p-1 lg:py-2 lg:px-4 lg:font-semibold">
                       Create new contact
                     </button>
                   </Link>
@@ -121,9 +121,9 @@ function ContactPage() {
                     key={item.id}
                   >
                     {editedContact && editedContact.id === item.id ? (
-                      <div className="flex flex-col lg:flex-row justify-between gap-8 p-5">
+                      <div className="flex flex-col lg:flex-row justify-between lg:gap-8 lg:p-5">
                         <div className="flex flex-col gap-2 p-2">
-                          <div className="flex gap-2 items-center ">
+                          <div className="flex gap-2 items-center">
                             <label className="mr-2 w-20">First Name</label>
                             <input
                               className="border rounded-lg p-2 text-black"
@@ -197,59 +197,73 @@ function ContactPage() {
                           </div>
                           <div className="flex flex-row gap-6 lg:gap-2 justify-center">
                             <button
-                              className="rounded-full border bg-[#ee7c68] text-[#fff]"
+                              className="flex gap-1 items-center rounded-md border bg-[#ee7c68] text-white p-2"
                               onClick={handleUpdate}
                             >
                               <div className="flex gap-1 items-center">
-                                <span className="px-2 py-1">Save</span>
-                                <span className="text-[#fff] px-2 py-1">
+                                <span>Save</span>
+                                <span>
                                   <UpdateIcon />
                                 </span>
                               </div>
                             </button>
                             <button
-                              className="rounded-full border bg-[#ee7c68] text-[#fff] p-2"
+                            className="flex gap-1 items-center rounded-md border bg-[#ee7c68] text-white p-2"
                               onClick={() => setEditedContact(null)}
                             >
-                              <CancelIcon />
+                              <span>Cancel</span>
+                              <span>
+                                <CancelIcon />
+                              </span>
                             </button>
                           </div>
                         </div>
                       </div>
                     ) : (
-                      <div className="flex flex-row justify-between lg:gap-8 p-2">
+                      <div className="flex flex-col lg:flex-row lg:justify-between lg:gap-8 p-2">
                         <div>
-                          <div className="p-2 flex lg:gap-2">
+                          <div className="p-2 flex gap-2">
                             <span>First name: </span>
-                            <span className="text-[#000]">{item.fName}</span>
+                            <span className="text-[#000] font-medium">
+                              {item.fName}
+                            </span>
                           </div>
-                          <div className="p-2 flex lg:gap-2">
+                          <div className="p-2 flex gap-2">
                             <span>Last name: </span>
-                            <p className="text-[#000] w-56 lg:w-96 break-words">
+                            <p className="text-[#000] font-medium">
                               {item.lName}
                             </p>
                           </div>
-                          <div className="p-2 flex lg:gap-2">
+                          <div className="p-2 flex gap-2">
                             <span>Status:</span>
-                            <span className="text-[#000]">{item.status}</span>
+                            <span className="text-[#000] font-medium">
+                              {item.status}
+                            </span>
                           </div>
                         </div>
-                        <div className="flex flex-col gap-4">
+                        <div className="flex lg:flex-col gap-4 items-center mt-2 lg:mt-0">
                           <div className="flex justify-center">
-                            <h1>Actions</h1>
+                            <h1 className="hidden lg:block">Actions</h1>
+                            <h1 className="block lg:hidden">Actions:</h1>
                           </div>
                           <div className="flex flex-row gap-2">
                             <button
-                              className="rounded-full border bg-[#ee7c68] text-[#fff]  p-2"
+                              className="flex gap-1 items-center rounded-md border bg-[#ee7c68] text-[#fff] p-2"
                               onClick={() => handleDelete(item.id)}
                             >
-                              <DeleteIcon />
+                              <span>Delete</span>
+                              <span>
+                                <DeleteIcon />
+                              </span>
                             </button>
                             <button
-                              className="rounded-full border bg-[#ee7c68] text-[#fff] p-2"
+                              className="flex gap-1 items-center rounded-md border bg-[#ee7c68] text-[#fff] p-2"
                               onClick={() => handleEdit(item.id)}
                             >
-                              <EditIcon />
+                              <span>Edit</span>
+                              <span>
+                                <EditIcon />
+                              </span>
                             </button>
                           </div>
                         </div>
