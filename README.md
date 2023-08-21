@@ -22,6 +22,12 @@ stay in same directory where you clone the project and run this command to insta
 npm install
 ```
 
+And to install react leaflet map run this command
+
+```bash
+npm install leaflet
+```
+
 ### Step 2 - Launch the Application
 
 Finally, in the same directory, execute the following command to run the application:
